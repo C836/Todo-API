@@ -9,6 +9,8 @@ export function addTodo(todo) {
   });
 }
 
+
+
 export function getTodo(id, callback) {
   const sql = `SELECT * FROM todos WHERE userId = "${id}"`;
 
@@ -16,6 +18,9 @@ export function getTodo(id, callback) {
     return callback(error ? error : response);
   });
 }
+
+
+
 
 export function getTodoId(id, callback) {
   const sql = `SELECT userId, count(*) as todoId FROM todos WHERE userId GROUP BY userId`;
