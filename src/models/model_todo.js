@@ -1,5 +1,5 @@
 export default class Todos {
-  constructor(todo, todoId, userId) {
+  constructor(todo, todoId, userId, atualizado) {
     this.userId = userId
     this.todoId = todoId
     this.status = 0

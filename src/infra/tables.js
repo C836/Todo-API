@@ -24,7 +24,7 @@ class Tables {
             userId varchar(36),
             todoId int,
             status int,
-            criado date,
+            criado datetime,
             atualizado datetime,
             prazo date,
             descricao varchar(1000),

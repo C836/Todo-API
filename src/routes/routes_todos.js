@@ -4,7 +4,14 @@ import jwt from "jsonwebtoken";
 import authenticate from "../middleware/authenticate.js";
 
 import model_todo from "../models/model_todo.js";
-import { addTodo, getTodo, getTodoId } from "../DAO/dao_todo.js";
+import {
+  addTodo,
+  checkTodoStatus,
+  getTodo,
+  getTodoId,
+  updateTodo,
+} from "../DAO/dao_todo.js";
+import { todoValidate } from "../controllers/control_todos.js";
 
 const route_todos = express.Router();
 
@@ -30,8 +37,22 @@ route_todos.post("/post", authenticate, (req, res) => {
   });
 });
 
-route_todos.patch("/update", authenticate, (req, res) => {
-  res.send("teste");
+route_todos.patch("/update/:id", authenticate, (req, res) => {
+  const userId = jwt.decode(req.headers["x-access-token"]).id[0].userId;
+  const todoId = req.params.id;
+  const body = req.body;
+
+  checkTodoStatus(userId, todoId, (callback) => {
+    if(!callback) return res.send("Tarefas concluidas não podem ser atualizadas!")
+
+    if (todoValidate(body)) {
+      updateTodo(body, userId, todoId, (callback) => {
+        res.send(callback);
+      });
+    } else {
+      res.send("Erro, verifique os campos de entrada e tente novamente");
+    }
+  });
 });
 
 export default route_todos;
