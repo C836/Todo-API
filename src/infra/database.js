@@ -1,17 +1,9 @@
-class Database {
-  init(connection) {
-    this.connection = connection;
+import { connection } from "./connect.js";
 
-    this.createDatabase();
-  }
+export default function createDatabase(){
+  const sql = `CREATE DATABASE IF NOT EXISTS todos`
 
-  createDatabase() {
-    const sql = `
-        CREATE DATABASE IF NOT EXISTS todos;`
-    this.connection.query(sql, (error) => {
-      if (error) console.log(error);
-    });
-  }
+  connection.query(sql, (error, response) => {
+    console.log(error ? error : response)
+  });
 }
-
-export default new Database();

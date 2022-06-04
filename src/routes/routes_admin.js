@@ -1,15 +1,40 @@
 import express from "express";
+import jwt from "jsonwebtoken"
+import authenticate from "../middleware/authenticate.js";
 import { getSuperTodo } from "../DAO/dao_admin.js";
+import { randomUUID } from "crypto";
 
-const routes_admin = express.Router()
+const routes_admin = express.Router();
 
-routes_admin.get("/todos/:pag?", (req, res) => {
-    const status = req.headers['status'];
-    const pag = req.params.pag
+// LOGIN
+routes_admin.post("/login", (req, res) => {
+  if (
+    req.body.email === process.env.ADMIN_EMAIL &&
+    req.body.senha === process.env.ADMIN_PASS) 
+    {
+        const token = jwt.sign( { id: randomUUID() } , process.env.ADMIN_TOKEN_SECRET);
+        res.send({ auth: true, token: token });
+    }
+    else {
+        res.send("Erro, credenciais invalidas")
+    }
+});
 
-    getSuperTodo(status, Number(pag), callback => {
-        res.send(callback)
-    })
-})
+//LOGOUT
 
-export default routes_admin
+routes_admin.post("/logout", (req, res) => {
+  res.json({ auth: false, token: null });
+});
+
+
+
+routes_admin.get("/todos/:pag?", authenticate ,(req, res) => {
+  const status = req.headers["status"];
+  const pag = req.params.pag;
+
+  getSuperTodo(status, Number(pag), (callback) => {
+    res.send(callback);
+  });
+});
+
+export default routes_admin;

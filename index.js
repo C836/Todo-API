@@ -7,6 +7,7 @@ import bodyParser from "body-parser"
 import route_users from "./src/routes/routes_users.js"
 import route_todos from "./src/routes/routes_todos.js";
 import routes_admin from "./src/routes/routes_admin.js";
+import createDatabase from "./src/infra/database.js";
 
 const app = express();
 app.use(bodyParser.json())
@@ -17,7 +18,7 @@ connection.connect(error => {
   if (error) {
     console.log(error)
   } else {
-    Database.init(connection)
+    createDatabase(connection)
     Tables.init(connection)
     app.listen(PORT, () => `Servidor rodando na porta ${PORT}`);
   }

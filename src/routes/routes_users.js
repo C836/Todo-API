@@ -4,7 +4,7 @@ import model_users from "../models/model_users.js";
 import dao_users from "../DAO/dao_users.js";
 
 import Login from "../DAO/login.js";
-import success from "../controllers/successLogin.js";
+import success from "../controllers/control_users.js";
 import "dotenv/config";
 
 const route_users = express.Router();
