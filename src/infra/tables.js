@@ -22,13 +22,12 @@ class Tables {
     const sql = `
             CREATE TABLE IF NOT EXISTS todos (
             userId varchar(36),
-            todoId int AUTO_INCREMENT,
+            todoId int,
             status int,
-            criado datetime,
+            criado date,
             atualizado datetime,
             prazo date,
             descricao varchar(1000),
-            PRIMARY KEY (todoId),
             FOREIGN KEY (userId) REFERENCES usuarios(userId))`;
     this.connection.query(sql, (error) => {
       if (error) console.log(error);
