@@ -11,12 +11,6 @@ Sistema de cadastro de usuários e armazenamento de tarefas utilizando Express e
 ```
 $ git clone https://github.com/C836/Todo-API
 ```
-- Inicie a conexão com o Mysql e crie o banco de dados
-```
-$ mysql -u root -p
-
-$ CREATE DATABASE todos;
-```
 
 - Navegue pelos arquivos até a raiz da aplicação, instale as dependências necessárias e inicie o projeto.
 

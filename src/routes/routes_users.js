@@ -1,7 +1,7 @@
 import express from "express";
 
 import model_users from "../models/model_users.js";
-import addUser from "./../DAO/dao_users.js"
+import { addUser } from "./../DAO/dao_users.js"
 
 import Login from "../DAO/login.js";
 import success from "../controllers/control_users.js";
