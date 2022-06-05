@@ -2,7 +2,7 @@
 
 Sistema de cadastro de usuários e armazenamento de tarefas utilizando Express e MySql.
 
-### Instalação
+## Instalação
 
 - Tenha o [Node.js](https://nodejs.dev/) instalado em seu computador.
 
@@ -54,7 +54,7 @@ ADMIN_PASS = SENHASECRETA918
 
 </details>
 
-### Rotas
+## Rotas
 
 * Status
 
@@ -63,7 +63,7 @@ ADMIN_PASS = SENHASECRETA918
     - 1 : Concluido :heavy_check_mark:
 
 
-#### /users/ - Autenticação
+### /users/ - Autenticação
 
 <code>POST</code> - Cadastrar usuário no banco de dados
 
@@ -174,6 +174,6 @@ A rota de admin compara a requisição diretamente com os dados do arquivo .env 
     }
 ]
 ```
-### Diagrama de conexões
+## Diagrama de conexões
 
 ![diagrama](./src/asssets/diagram.png)
