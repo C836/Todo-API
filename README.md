@@ -4,7 +4,7 @@ Sistema de cadastro de usuários e armazenamento de tarefas utilizando Express e
 
 ## Instalação
 
-- Tenha o [Node.js](https://nodejs.dev/) instalado em seu computador.
+- Tenha o [Node.js](https://nodejs.dev/) e o [MySQL](https://www.mysql.com/downloads/) instalado em seu computador.
 
 - Faça o clone do repositório atráves do terminal do [Git](https://git-scm.com/downloads).
 
@@ -22,9 +22,6 @@ $ npm start
 ---
 
 Altere as chaves e senhas de Admin atráves do arquivo ".env" localizado na raiz do projeto.
-
-<details>
-<summary>Exemplo</summary>
 
 ```
 
@@ -45,8 +42,6 @@ DATABASE = todos
 ADMIN_EMAIL = EMAILSECRETO@MAIL.COM
 ADMIN_PASS = SENHASECRETA918
 ```
-
-</details>
 
 ## Rotas
 
