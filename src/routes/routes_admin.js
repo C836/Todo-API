@@ -20,13 +20,6 @@ routes_admin.post("/login", (req, res) => {
     }
 });
 
-//LOGOUT
-
-routes_admin.post("/logout", (req, res) => {
-  res.json({ auth: false, token: null });
-});
-
-
 
 routes_admin.get("/todos/:pag?", authenticate ,(req, res) => {
   const status = req.headers["status"];

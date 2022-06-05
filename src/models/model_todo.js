@@ -1,5 +1,5 @@
 export default class Todos {
-  constructor(todo, todoId, userId, atualizado) {
+  constructor(todo, todoId, userId) {
     this.userId = userId
     this.todoId = todoId
     this.status = 0
@@ -14,14 +14,7 @@ export default class Todos {
   }
 
   getPrazo(prazo){
-    let date = prazo.split('/')
-    return new Date(date[2], date[1], date[0]).toLocaleDateString('af-ZA');
+    let data = prazo.split('/')
+    return `${data[2]}/${data[1]}/${data[0]}`
   }
 };
-
-            // todoId int,
-            // status int,
-            // prazo datetime,
-            // descricao varchar(1000),
-            // PRIMARY KEY (todoId),
-            // FOREIGN KEY (id) REFERENCES usuarios(id))`;
